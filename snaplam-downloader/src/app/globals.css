@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default theme variables (abu). The ThemeProvider overrides these at
+   runtime by setting inline CSS vars on <html> from lib/themes.ts. */
+@layer base {
+  :root {
+    --background: 222 30% 8%;
+    --foreground: 210 20% 96%;
+    --card: 222 24% 12%;
+    --card-foreground: 210 20% 96%;
+    --primary: 217 33% 24%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 215 25% 20%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 217 24% 16%;
+    --muted-foreground: 215 15% 65%;
+    --accent: 217 33% 30%;
+    --accent-foreground: 210 40% 98%;
+    --border: 216 20% 22%;
+    --input: 216 20% 22%;
+    --ring: 215 20% 40%;
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --radius: 1rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 15% -10%, hsl(var(--primary) / 0.25), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 100% 0%, hsl(var(--accent) / 0.18), transparent 55%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glassmorphism surface — used everywhere per the design spec. */
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-card/60 backdrop-blur-xl shadow-xl;
+  }
+  .glass-soft {
+    @apply rounded-2xl border border-white/10 bg-card/40 backdrop-blur-md;
+  }
+  .btn-grad {
+    @apply bg-gradient-to-r from-primary to-accent text-primary-foreground;
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-xl bg-muted/60;
+  }
+  .skeleton::after {
+    @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent;
+    content: "";
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.4) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-muted-foreground/30;
+  }
+}

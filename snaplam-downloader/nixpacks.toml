@@ -1,0 +1,19 @@
+# Nixpacks build config for Railway.
+# Keeps the runtime lean: only production deps are kept after build.
+
+[phases.setup]
+nixPkgs = ["nodejs_18"]
+
+[phases.install]
+cmds = ["npm ci"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm run start"
+
+[variables]
+# Cap Node heap so a single Railway instance stays comfortably < 512MB.
+NODE_OPTIONS = "--max-old-space-size=460"
+NODE_ENV = "production"
