@@ -2,15 +2,15 @@
   "name": "snaplam-downloader",
   "version": "1.3.0",
   "private": true,
-  "description": "SnapLam - Downloader v1.3 — Download Semua Video & Ngobrol Santai",
+  "description": "SnapLam - Downloader v1.3",
   "scripts": {
-  "dev": "node server.js",
-  "build": "prisma generate && next build",
-  "start": "NODE_ENV=production node server.js",
-  "postinstall": "prisma generate",
-  "lint": "next lint",
-  "db:push": "prisma db push"
-  }
+    "dev": "node server.js",
+    "build": "prisma generate && next build",
+    "start": "NODE_ENV=production node server.js",
+    "postinstall": "prisma generate",
+    "lint": "next lint",
+    "db:push": "prisma db push"
+  },
   "dependencies": {
     "@auth/prisma-adapter": "^2.4.2",
     "@prisma/client": "^5.19.1",
@@ -24,8 +24,8 @@
     "lucide-react": "^0.439.0",
     "next": "14.2.35",
     "next-auth": "5.0.0-beta.20",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     "recharts": "^2.12.7",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
